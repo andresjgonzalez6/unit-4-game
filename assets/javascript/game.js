@@ -7,28 +7,29 @@
 
 
 $(document).ready(function(){
-    var random=Math.floor(Math.random()*101+19);
+    var random=Math.floor(Math.random()*101+15);
+    console.log(random);
 
-    $('#randomNumber').text(Random);
-    //appending random number to the randomNumber id in html doc.
+    $('#gemNum').text(random);
+    //appending random number to the gemNum id in html doc.
 
-    var num1= Math.floor(Math.random()*10+1)
-    var num2= Math.floor(Math.random()*10+1)
-    var num3= Math.floor(Math.random()*10+1)
-    var num4= Math.floor(Math.random()*10+1)
+    var num1= Math.floor(Math.random()*11+1);
+    var num2= Math.floor(Math.random()*11+1);
+    var num3= Math.floor(Math.random()*11+1);
+    var num4= Math.floor(Math.random()*11+1);
     //setting random numbers for each crystal
     //random number between 1 - 12
     var userScore=0;
     var wins=0;
     var losses=0;
-//variables for wins and losses
+//wins and losses variables
     $('#numberWins').text(wins);
     $('#numberLosses').text(losses);
-    //resets the game
+    //game reset
 
     function reset(){
-        Random=Math.floor(Math.random()*11+1);
-        console.log(Random)
+        random=Math.floor(Math.random()*11+1);
+        console.log(random);
 
         function reset(){
             num1=Math.floor(Math.random()*11+1);
@@ -38,7 +39,7 @@ $(document).ready(function(){
             userScore= 0;
             $('#finalTotal').text(userScore);
 
-            //adds the wins to the userScore
+            //increases win count
 
             function winner(){
                 alert("You won!");
@@ -50,18 +51,18 @@ $(document).ready(function(){
                 alert ("You lose!");
                 losses++;
                 $('#numberLosses').text(losses);
-                reset()
+                reset();
             }
 
             $('#crystal1').on('click', function(){
                 userScore = userScore + num1;
                 console.log("New userScore=" + userScore);
                 $('#finalTotal').text(userScore);
-                //sets win/lose conditions
-                if(userScore === Random){
+                //determines a win or loss
+                if(userScore === random){
                     winner();
                 }
-                else if (userScore > Random) {
+                else if (userScore > random) {
                     loser();
                 }
             })
@@ -70,11 +71,11 @@ $(document).ready(function(){
                 userScore = userScore + num2;
                 console.log("New userScore=" + userScore);
                 $('#finalTotal').text(userScore);
-                //sets win/lose conditions
-                if(userScore === Random){
+                
+                if(userScore === random){
                     winner();
                 }
-                else if (userScore > Random) {
+                else if (userScore > random) {
                     loser();
                 }
             })
@@ -83,11 +84,11 @@ $(document).ready(function(){
                 userScore = userScore + num3;
                 console.log("New userScore=" + userScore);
                 $('#finalTotal').text(userScore);
-                //sets win/lose conditions
-                if(userScore === Random){
+                
+                if(userScore === random){
                     winner();
                 }
-                else if (userScore > Random) {
+                else if (userScore > random) {
                     loser();
                 }
             })
@@ -96,17 +97,15 @@ $(document).ready(function(){
                 userScore = userScore + num4;
                 console.log("New userScore=" + userScore);
                 $('#finalTotal').text(userScore);
-                //sets win/lose conditions
-                if(userScore === Random){
+                
+                if(userScore === random){
                     winner();
                 }
-                else if (userScore > Random) {
+                else if (userScore > random) {
                     loser();
                 }
             })
-
-        }
-        
+        }  
     }
 
 
