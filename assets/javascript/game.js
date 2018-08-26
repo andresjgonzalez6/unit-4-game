@@ -6,107 +6,104 @@
 //After a win or a loss, reset the game. 
 
 
-$(document).ready(function(){
-    var random=Math.floor(Math.random()*101+15);
+$(document).ready(function () {
+    var random = Math.floor(Math.random() * 101 + 19);
     console.log(random);
-
+    //gemNum needs to be between 19 and 120
     $('#gemNum').text(random);
-    //appending random number to the gemNum id in html doc.
+    //appending random number to id=gemNum
 
-    var num1= Math.floor(Math.random()*11+1);
-    var num2= Math.floor(Math.random()*11+1);
-    var num3= Math.floor(Math.random()*11+1);
-    var num4= Math.floor(Math.random()*11+1);
+    var num1 = Math.floor(Math.random() * 11 + 1);
+    console.log(num1);
+    var num2 = Math.floor(Math.random() * 11 + 1);
+    console.log(num2);
+    var num3 = Math.floor(Math.random() * 11 + 1);
+    console.log(num3);
+    var num4 = Math.floor(Math.random() * 11 + 1);
+    console.log(num4);
     //setting random numbers for each crystal
     //random number between 1 - 12
-    var userScore=0;
-    var wins=0;
-    var losses=0;
-//wins and losses variables
+    var userScore = 0;
+    var wins = 0;
+    var losses = 0;
+    //wins and losses variables
     $('#numberWins').text(wins);
     $('#numberLosses').text(losses);
-    //game reset
+    //game time
 
-    function reset(){
-        random=Math.floor(Math.random()*11+1);
+    function game() {
+        var random = Math.floor(Math.random() * 101 + 19);
         console.log(random);
 
-        function reset(){
-            num1=Math.floor(Math.random()*11+1);
-            num2=Math.floor(Math.random()*11+1);
-            num3=Math.floor(Math.random()*11+1);
-            num4=Math.floor(Math.random()*11+1);
-            userScore= 0;
+        $('#crystal1').on('click', function () {
+            userScore = userScore + num1;
+            console.log("New userScore=" + userScore);
+            $('#finalTotal').text(userScore);
+            //determines a win or loss
+            if (userScore === random) {
+                winner();
+            }
+            else if (userScore > random) {
+                loser();
+            }
+        })
+
+        $('#crystal2').on('click', function () {
+            userScore = userScore + num2;
+            console.log("New userScore=" + userScore);
             $('#finalTotal').text(userScore);
 
-            //increases win count
-
-            function winner(){
-                alert("You won!");
-                wins++;
-                $('#numberWins').text(wins);
-                reset();
+            if (userScore === random) {
+                winner();
             }
-            function loser(){
-                alert ("You lose!");
-                losses++;
-                $('#numberLosses').text(losses);
-                reset();
+            else if (userScore > random) {
+                loser();
             }
+        })
 
-            $('#crystal1').on('click', function(){
-                userScore = userScore + num1;
-                console.log("New userScore=" + userScore);
-                $('#finalTotal').text(userScore);
-                //determines a win or loss
-                if(userScore === random){
-                    winner();
-                }
-                else if (userScore > random) {
-                    loser();
-                }
-            })
+        $('#crystal3').on('click', function () {
+            userScore = userScore + num3;
+            console.log("New userScore=" + userScore);
+            $('#finalTotal').text(userScore);
 
-            $('#crystal2').on('click', function(){
-                userScore = userScore + num2;
-                console.log("New userScore=" + userScore);
-                $('#finalTotal').text(userScore);
-                
-                if(userScore === random){
-                    winner();
-                }
-                else if (userScore > random) {
-                    loser();
-                }
-            })
+            if (userScore === random) {
+                winner();
+            }
+            else if (userScore > random) {
+                loser();
+            }
+        })
 
-            $('#crystal3').on('click', function(){
-                userScore = userScore + num3;
-                console.log("New userScore=" + userScore);
-                $('#finalTotal').text(userScore);
-                
-                if(userScore === random){
-                    winner();
-                }
-                else if (userScore > random) {
-                    loser();
-                }
-            })
+        $('#crystal4').on('click', function () {
+            userScore = userScore + num4;
+            console.log("New userScore=" + userScore);
+            $('#finalTotal').text(userScore);
 
-            $('#crystal4').on('click', function(){
-                userScore = userScore + num4;
-                console.log("New userScore=" + userScore);
-                $('#finalTotal').text(userScore);
-                
-                if(userScore === random){
-                    winner();
+            if (userScore === random) {
+                winner();
+            }
+            else if (userScore > random) {
+                loser();
+            }
+        })
+                    //wins and losses
+                    function winner() {
+                        alert("You won!");
+                        wins++;
+                        $('#numberWins').text(wins);
+                        reset();
+                    }
+                    function loser() {
+                        alert("You lose!");
+                        losses++;
+                        $('#numberLosses').text(losses);
+                        reset();
+                    }
                 }
-                else if (userScore > random) {
-                    loser();
-                }
-            })
-        }  
-    }
 
 
-});
+        function reset() {
+            userScore = 0;
+            game();
+        }
+})
