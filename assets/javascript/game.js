@@ -30,6 +30,7 @@ $(document).ready(function () {
     $('#numberWins').text(wins);
     $('#numberLosses').text(losses);
     //game time
+    //Anything after this line does not work for some reason, I am not sure. The console.log are not functioning. Most problematic, the crystal buttons are unresponsive. 
 
     function game() {
         var random = Math.floor(Math.random() * 101 + 19);
@@ -100,7 +101,6 @@ $(document).ready(function () {
                         reset();
                     }
                 }
-
 
         function reset() {
             userScore = 0;
